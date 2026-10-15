@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "Employee Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:8080" }],
+  "item": [
+    {
+      "name": "List employees (page 0, size 10)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/employees?page=0&size=10" }
+    },
+    {
+      "name": "Search + filter (name/email, department, status)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/employees?search=priya&department=Engineering&status=ACTIVE&page=0&size=10&sortBy=fullName&direction=asc" }
+    },
+    {
+      "name": "Get employee by id",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/employees/1" }
+    },
+    {
+      "name": "Create employee",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/employees",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Test User\",\n  \"email\": \"test.user@example.com\",\n  \"phoneNumber\": \"9876500000\",\n  \"department\": \"Engineering\",\n  \"designation\": \"Backend Developer\",\n  \"dateOfJoining\": \"2024-01-15\",\n  \"salary\": 750000,\n  \"status\": \"ACTIVE\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Update employee",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/employees/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Aarav Sharma\",\n  \"email\": \"aarav.sharma@example.com\",\n  \"phoneNumber\": \"9876543210\",\n  \"department\": \"Engineering\",\n  \"designation\": \"Senior Software Engineer\",\n  \"dateOfJoining\": \"2022-06-15\",\n  \"salary\": 1000000,\n  \"status\": \"ACTIVE\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete employee",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/api/employees/1" }
+    },
+    {
+      "name": "List departments",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/employees/departments" }
+    },
+    {
+      "name": "Export CSV",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/employees/export?status=ACTIVE" }
+    },
+    {
+      "name": "Validation error example (400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/employees",
+        "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"\",\n  \"email\": \"not-an-email\",\n  \"salary\": -5\n}" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">Employee Management</a>
+    <nav>
+      <a href="#/">Employees</a>
+      <a href="#/add" class="btn btn-primary">+ Add Employee</a>
+      <a href="/swagger-ui.html" target="_blank" rel="noopener">API Docs</a>
+    </nav>
+  </header>
+  <main id="app" class="container"></main>
+  <div id="toast" class="toast hidden"></div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Delete employee?</h3>
+      <p id="modal-text"></p>
+      <div class="modal-actions">
+        <button class="btn" id="modal-cancel">Cancel</button>
+        <button class="btn btn-danger" id="modal-confirm">Delete</button>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Only MySQL in Docker (run the Spring Boot app from IntelliJ)
+services:
+  db:
+    image: mysql:8.0
+    container_name: ems-mysql
+    environment:
+      MYSQL_DATABASE: employee_db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
